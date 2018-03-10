@@ -3,7 +3,7 @@ from tweepy import OAuthHandler
 
 import getAllTweets
 import feature_ends_with_rand_digits
-import feature_percent_of_tweets_that_are_links
+import feature_percent_links
 
 
 CONSUMER_KEY = '07Iv3RJnRPPToDS6a564cQ93h'
@@ -29,6 +29,6 @@ feature_vector = []
 #feature_vector.append(extract_feature1(user))
 
 feature_vector.append(feature_ends_with_rand_digits.get_feature(user))
-feature_vector.append(feature_percent_of_tweets_that_are_links.linkRatio(tweets))
+feature_vector.append(feature_percent_links.linkRatio(tweets))
 
 print feature_vector
