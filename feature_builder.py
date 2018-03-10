@@ -1,6 +1,7 @@
 import tweepy
 from tweepy import OAuthHandler
 
+import getAllTweets
 import feature_ends_with_rand_digits
 
 
@@ -19,6 +20,7 @@ api = tweepy.API(auth)
 # Trump as an example
 user = api.get_user('@realDonaldTrump')
 
+tweets = getAllTweets.getAllTweets(user.screen_name)
 
 feature_vector = []
 
