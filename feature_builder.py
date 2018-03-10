@@ -4,6 +4,7 @@ from tweepy import OAuthHandler
 import getAllTweets
 import feature_ends_with_rand_digits
 import feature_percent_links
+import feature_many_languages
 
 
 CONSUMER_KEY = '07Iv3RJnRPPToDS6a564cQ93h'
@@ -28,7 +29,11 @@ feature_vector = []
 # Feature extractors take user object as input, output the feature, e.g. a number between 0 and 1
 #feature_vector.append(extract_feature1(user))
 
+# FEATURE: Name of bot ends with 8 random digits
 feature_vector.append(feature_ends_with_rand_digits.get_feature(user))
-feature_vector.append(feature_percent_links.linkRatio(tweets))
+# FEATURE: Percentage of tweets that are links
+feature_vector.append(feature_percent_of_tweets_that_are_links.get_feature(tweets))
+# FEATURE: Is the user posting in more than 3 languages // seems to be garbage
+#feature_vector.append(feature_many_languages.get_feature(tweets))
 
 print feature_vector
