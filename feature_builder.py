@@ -4,6 +4,7 @@ from tweepy import OAuthHandler
 import getAllTweets
 import feature_timedBot
 import feature_percent_links
+import feature_solo_links
 import feature_activity
 import feature_ends_with_rand_digits
 import feature_clickbait
@@ -39,6 +40,9 @@ def calculateFeatureVector(user):
     #FEATURE: How many of the user's tweets contain links?
     feature_vector.append(feature_percent_links.get_feature(tweets))
 
+    #FEATURE: How many of the user's tweets are just solo links?
+    feature_vector.append(feature_solo_links.get_feature(tweets))
+    
     #FEATURE: How many tweets is the user posting per day?
     feature_vector.append(feature_activity.get_feature(tweets))
 
