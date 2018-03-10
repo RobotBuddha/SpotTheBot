@@ -2,7 +2,7 @@ from getAllTweets import *
 import re
 
 # Returns the percentage of a user's last 3220 tweets that contain a link.
-def linkRatio(tweets):
+def get_feature(tweets):
     filteredTweets = 0
     for tweet in tweets:
         if (re.search('((www\.[^\s]+)|(https?://[^\s]+))', tweet.text) is not None):
