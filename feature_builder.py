@@ -19,10 +19,10 @@ import feature_protected
 import feature_verified
 
 
-CONSUMER_KEY = '07Iv3RJnRPPToDS6a564cQ93h'
-CONSUMER_SECRET = 'J19Zx8NsJo03R5WfiqVTu7lfmPySLrfd2IIGtzPvdXCEAUG9YB'
-ACCESS_KEY = '748975287019405312-EfE9siMvpp4LS3McSj8EOmMxB3eLBuP'
-ACCESS_SECRET = 'gzgZfuSNlE5e1F3VFsFyLfdWAVSom7gSuWavX7PnJ4fbU'
+CONSUMER_KEY = undefined
+CONSUMER_SECRET = undefined
+ACCESS_KEY = undefined
+ACCESS_SECRET = undefined
 auth = OAuthHandler(CONSUMER_KEY,CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
