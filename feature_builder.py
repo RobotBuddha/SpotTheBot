@@ -32,7 +32,10 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 def calculateFeatureVector(user):
     # Trump as an example
     try:
-        user = api.get_user('@' + user)
+        if user[0] != '@':
+            user = api.get_user('@' + user)
+        else:
+            user = api.get_user(user)
     except tweepy.TweepError:
         return [0, 0, 0, 0, 0, 0, 0, 0, 0]
 

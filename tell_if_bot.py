@@ -78,11 +78,11 @@ def testAccount(username):
 
 	if features != False:
 
-		if features[8] == 0:
-			return ('real', 1.0)
-
 		if all(map(lambda x: x == features[0], features)):
-			return ('real', 1.0)
+            return "No such user"
+
+        if features[8] == 0:
+            return ('real', 1.0)
 
 		return voted_classifier.classify(features), voted_classifier.confidence(features)
 
