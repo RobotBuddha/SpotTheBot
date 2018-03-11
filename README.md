@@ -1,1 +1,1 @@
-# SpotTheBot
+# SpotTheBot - Changing News for Good
