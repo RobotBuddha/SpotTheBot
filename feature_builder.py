@@ -19,10 +19,10 @@ import feature_protected
 import feature_verified
 
 
-CONSUMER_KEY = undefined
-CONSUMER_SECRET = undefined
-ACCESS_KEY = undefined
-ACCESS_SECRET = undefined
+CONSUMER_KEY = ""
+CONSUMER_SECRET = ""
+ACCESS_KEY = ""
+ACCESS_SECRET = ""
 auth = OAuthHandler(CONSUMER_KEY,CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
