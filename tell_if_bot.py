@@ -76,17 +76,32 @@ voted_classifier = VoteClassifier(
 def testAccount(username):
 	features = extract_features(username)
 
-	if features != False:
+# 	print "Vector values (Human -> 0, Bot -> 1)"
+# 	print "Whether the account has tweeted at all:             ", str(features[0])
+# 	print "How similar the account's tweets are to each other: ", str(features[1])
+# 	print "Whether the account tweets in a scheduled pattern:  ", str(features[2])
+# 	print "Proportion of tweets that contain links:            ", str(features[3])
+# 	print "Frequency of posting tweets:                        ", str(features[4])
+# 	print "Proportion of tweets that are just single links:    ", str(features[5])
+# 	print "Frequency of common clickbait phrases used:         ", str(features[6])
+# 	print "Ratio of friends to followers:                      ", str(features[7])
+# 	print "Whether the account is verified:                    ", str(features[8])
+# 	print "Result:",
 
-		if max(features.values())==0:
-			return "No such user"
+	if max(features.values())==0:
+		return "No such user."
 
-		if features[8] == 0:
-			return ('real', 1.0)
+	if features[8] == 0:
+		return ('real', 1.0)
 
-		return voted_classifier.classify(features), voted_classifier.confidence(features)
+	return voted_classifier.classify(features), voted_classifier.confidence(features)
 
-	else:
-		return "No such user"
-
-print testAccount("mavia_salim")
+#Feature vector = 0) Whether it has tweeted
+#                 1) Similar tweets
+#                 2) Scheduled pattern
+#                 3) Proportion of links
+#                 4) How many tweets per day
+#                 5) Proportion of solo links
+#                 6) Clickbait phrases
+#                 7) Friends to followers ratio
+#                 8) Verified account
