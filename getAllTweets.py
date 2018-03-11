@@ -13,7 +13,8 @@ def getAllTweets(screen_name):
 	alltweets = []
 	newTweets = api.user_timeline(screen_name = screen_name,count=200)
 	alltweets.extend(newTweets)
-	oldest = alltweets[-1].id - 1
+	if(len(alltweets)>0):
+		oldest = alltweets[-1].id - 1
 	while len(newTweets) > 0:
 		newTweets = api.user_timeline(screen_name = screen_name,count=200,max_id=oldest)
 		alltweets.extend(newTweets)
