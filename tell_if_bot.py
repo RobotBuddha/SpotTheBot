@@ -41,6 +41,7 @@ def extract_features(username):
         features[i] = feature_v[i]
     #else:
     #    return False
+    print features
     return features
 
 # Classifiers
@@ -76,15 +77,23 @@ voted_classifier = VoteClassifier(
 def testAccount(username):
 	features = extract_features(username)
 
-	if features != False:
-
-		if all(map(lambda x: x == features[0], features)):
-            return "No such user"
-
-        if features[8] == 0:
-            return ('real', 1.0)
-
-		return voted_classifier.classify(features), voted_classifier.confidence(features)
-
-	else:
+	if max(features.values())==0:
 		return "No such user"
+
+	if features[8] == 0:
+		return ('real', 1.0)
+
+	return voted_classifier.classify(features), voted_classifier.confidence(features)
+
+#print (testAccount("q923c4q2qn23q43"))
+#print (testAccount("realDonaldTrump"))
+
+#Feature vector = 0) Whether it has tweeted
+#                 1) Similar tweets
+#                 2) Scheduled pattern
+#                 3) Proportion of links
+#                 4) How many tweets per day
+#                 5) Proportion of solo links
+#                 6) Clickbait phrases
+#                 7) Friends to followers ratio
+#                 8) Verified account
