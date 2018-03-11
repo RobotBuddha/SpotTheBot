@@ -1,10 +1,10 @@
 import tweepy
 import csv
 
-ckey = '07Iv3RJnRPPToDS6a564cQ93h'
-csecret = 'J19Zx8NsJo03R5WfiqVTu7lfmPySLrfd2IIGtzPvdXCEAUG9YB'
-akey = '748975287019405312-EfE9siMvpp4LS3McSj8EOmMxB3eLBuP'
-asecret = 'gzgZfuSNlE5e1F3VFsFyLfdWAVSom7gSuWavX7PnJ4fbU'
+ckey = ""
+csecret = ""
+akey = ""
+asecret = ""
 
 def getAllTweets(screen_name):
 	authorise = tweepy.OAuthHandler(ckey, csecret)
