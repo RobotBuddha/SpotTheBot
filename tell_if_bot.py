@@ -78,7 +78,7 @@ def testAccount(username):
 
 	if features != False:
 
-		if all(map(lambda x: x == features[0], features)):
+		if max(features.values()) == 0:
             return "No such user"
 
         if features[8] == 0:
