@@ -1,4 +1,5 @@
 import tweepy
+import time
 from tweepy import OAuthHandler
 
 import getAllTweets
@@ -23,20 +24,25 @@ CONSUMER_SECRET = 'J19Zx8NsJo03R5WfiqVTu7lfmPySLrfd2IIGtzPvdXCEAUG9YB'
 ACCESS_KEY = '748975287019405312-EfE9siMvpp4LS3McSj8EOmMxB3eLBuP'
 ACCESS_SECRET = 'gzgZfuSNlE5e1F3VFsFyLfdWAVSom7gSuWavX7PnJ4fbU'
 auth = OAuthHandler(CONSUMER_KEY,CONSUMER_SECRET)
-api = tweepy.API(auth)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
-api = tweepy.API(auth)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 #user = api.get_user()
-
-# Trump as an example
-user = api.get_user('@realDonaldTrump')
 
 def calculateFeatureVector(user):
     # Trump as an example
-    user = api.get_user(user)
+    try:
+        user = api.get_user('@' + user)
+    except tweepy.TweepError:
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    tweets = getAllTweets.getAllTweets(user.screen_name)
+    if user.protected:
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    try:
+        tweets = getAllTweets.getAllTweets(user.screen_name)
+    except tweepy.TweepError:
+        time.sleep(15 * 60)
+        tweets = getAllTweets.getAllTweets(user.screen_name)
 
     # Feature extractors take user object as input, output the feature, e.g. a number between 0 and 1
     #feature_vector.append(extract_feature1(user))
@@ -54,7 +60,7 @@ def calculateFeatureVector(user):
         feature_vector.append(0)
         feature_vector.append(0)
 
-    elif(len(tweets) != 0):
+    elif(len(tweets) > 0):
         feature_vector.append(0)
     
         #FEATURE: Checking for bot users based on similar tweets
@@ -82,13 +88,10 @@ def calculateFeatureVector(user):
     feature_vector.append(feature_friends_to_followers.friend_follower_ratio(user))
 
     #FEATURE: Does the user have an unprotected account?
-    feature_vector.append(feature_protected.protected(user))
+    
 
     #FEATURE: Does the user have an unverified account?
     feature_vector.append(feature_verified.verified(user))
 
     return feature_vector
 
-print calculateFeatureVector("@SandraFair66")
-print calculateFeatureVector("@realDonaldTrump")
-print calculateFeatureVector("@eduniTHSoc")
