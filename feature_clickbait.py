@@ -42,7 +42,9 @@ def clickbait(tweets):
             score = score + 1
         if "life hack" in tweet.text.lower():
             score = score + 1
-    if (2*((score*1.0)/len(filteredTweets)))>1:
+    if len(filteredTweets) == 0:
+        return 1
+    elif (2*((score*1.0)/len(filteredTweets)))>1:
         return 1
     else:
         return 2*((score*1.0)/len(filteredTweets))
