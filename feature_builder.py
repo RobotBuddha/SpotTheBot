@@ -85,13 +85,8 @@ def calculateFeatureVector(user):
         feature_vector.append(feature_clickbait.clickbait(tweets))
 
 
-
-
     #FEATURE: Does the user have many more friends than followers?
     feature_vector.append(feature_friends_to_followers.friend_follower_ratio(user))
-
-    #FEATURE: Does the user have an unprotected account?
-
 
     #FEATURE: Does the user have an unverified account?
     feature_vector.append(feature_verified.verified(user))
