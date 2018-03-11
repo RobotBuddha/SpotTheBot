@@ -78,13 +78,15 @@ def testAccount(username):
 
 	if features != False:
 
-		if features[8] == 0:
-			return ('real', 1.0)
+		if max(features.values())==0:
+			return "No such user"
 
-		if all(map(lambda x: x == features[0], features)):
+		if features[8] == 0:
 			return ('real', 1.0)
 
 		return voted_classifier.classify(features), voted_classifier.confidence(features)
 
 	else:
 		return "No such user"
+
+print testAccount("mavia_salim")

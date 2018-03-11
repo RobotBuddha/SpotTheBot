@@ -62,7 +62,7 @@ def calculateFeatureVector(user):
 
     elif(len(tweets) > 0):
         feature_vector.append(0)
-    
+
         #FEATURE: Checking for bot users based on similar tweets
         feature_vector.append(feature_copy.copy(tweets))
 
@@ -71,10 +71,10 @@ def calculateFeatureVector(user):
 
         #FEATURE: Percentage of tweets that are links
         feature_vector.append(feature_percent_links.get_feature(tweets))
-          
+
         #FEATURE:  How many tweets is the user posting per day
         feature_vector.append(feature_activity.get_feature(tweets))
-  
+
         #FEATURE: How many of the user's tweets are just solo links?
         feature_vector.append(feature_solo_links.get_feature(tweets))
 
@@ -88,10 +88,9 @@ def calculateFeatureVector(user):
     feature_vector.append(feature_friends_to_followers.friend_follower_ratio(user))
 
     #FEATURE: Does the user have an unprotected account?
-    
+
 
     #FEATURE: Does the user have an unverified account?
     feature_vector.append(feature_verified.verified(user))
 
     return feature_vector
-
