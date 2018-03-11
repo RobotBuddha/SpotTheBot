@@ -1,1 +1,1 @@
-# SpotTheBot - Changing News for Good
+# SpotTheBot - There is nowhere to hide!
