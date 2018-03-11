@@ -27,11 +27,6 @@ class VoteClassifier(ClassifierI):
         return conf
 
 
-# # NEED TO TURN IT INTO THE REAL THING
-# def dummy_feature_builder(username):
-# 	features = {'1':1, '2':1, '3':1, '4':1, '5':1}
-# 	return features
-
 def extract_features(username):
     features = {}
     feature_v = feature_builder.calculateFeatureVector(username)
